@@ -45,7 +45,7 @@ func (s *Shell) PublishWithDetails(contentHash, key string, lifetime, ttl time.D
 // Resolve gets resolves the string provided to an /ipns/[name]. If asked to
 // resolve an empty string, resolve instead resolves the node's own /ipns value.
 func (s *Shell) Resolve(id string) (string, error) {
-	req := s.Request("name/resolve")
+	req := s.Request("name/resolve").Option("dhtrc", "2")
 	if id != "" {
 		req.Arguments(id)
 	}
